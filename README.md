@@ -3,6 +3,11 @@ Netoffice
 
 Base Netoffice installation, but now (partially) working under PHP 5. Uses the latest version of JPGraph.
 
+I just added some exceptions to Gantt plotting, so if there's one or more tasks without due date, it shows an error message.
+There are still some deprecated functions.
+
+## Environment
+
 * Windows: Works perfectly under Appserv by default.
 * Linux: Remember to install MS TrueType Fonts under your system.
 
