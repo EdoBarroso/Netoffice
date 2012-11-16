@@ -76,17 +76,17 @@ $listUpdates->openUpdates($tmpquery);
 $comptListUpdates = count($listUpdates->upd_id);
 
 for ($i = 0;$i < $comptListUpdates;$i++) {
-    if (ereg("\[status:([0-9])\]", $listUpdates->upd_comments[$i])) {
+    if (preg_match("/\[status:([0-9])\]/", $listUpdates->upd_comments[$i])) {
         preg_match("|\[status:([0-9])\]|i", $listUpdates->upd_comments[$i], $matches);
         $listUpdates->upd_comments[$i] = ereg_replace("\[status:([0-9])\]", "", $listUpdates->upd_comments[$i] . "<br>");
         $listUpdates->upd_comments[$i] .= $strings["status"] . " " . $status[$matches[1]];
     } 
-    if (ereg("\[priority:([0-9])\]", $listUpdates->upd_comments[$i])) {
+    if (preg_match("/\[priority:([0-9])\]/", $listUpdates->upd_comments[$i])) {
         preg_match("|\[priority:([0-9])\]|i", $listUpdates->upd_comments[$i], $matches);
         $listUpdates->upd_comments[$i] = ereg_replace("\[priority:([0-9])\]", "", $listUpdates->upd_comments[$i] . "<br>");
         $listUpdates->upd_comments[$i] .= $strings["priority"] . " " . $priority[$matches[1]];
     } 
-    if (ereg("\[datedue:([0-9]{4}-[0-9]{1,2}-[0-9]{1,2})\]", $listUpdates->upd_comments[$i])) {
+    if (preg_match("/\[datedue:([0-9]{4}-[0-9]{1,2}-[0-9]{1,2})\]/", $listUpdates->upd_comments[$i])) {
         preg_match("|\[datedue:([0-9]{4}-[0-9]{1,2}-[0-9]{1,2})\]|i", $listUpdates->upd_comments[$i], $matches);
         $listUpdates->upd_comments[$i] = ereg_replace("\[datedue:([0-9]{4}-[0-9]{1,2}-[0-9]{1,2})\]", "", $listUpdates->upd_comments[$i] . "<br>");
         $listUpdates->upd_comments[$i] .= $strings["due_date"] . " " . $matches[1];
