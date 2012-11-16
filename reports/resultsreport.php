@@ -301,7 +301,7 @@ if ($comptListTasks != "0") {
         $block1->closeRow();
 
         // checks that all tasks have due date for gantt drawing
-        if ($listTasks->tas_due_date[$i] == '--'){
+        if ($listTasks->tas_due_date[$i] == '--' OR $listTasks->tas_due_date[$i] == ''){
             $no_due_date += 1;
         }
     } 

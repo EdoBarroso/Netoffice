@@ -619,9 +619,12 @@ if ($projectDetail->pro_phase_set[0] != '0') {
             ), 'true');
         }
 
+        // changes due date string to $strings['none'] and counts 
+
         for ($i = 0; $i < $comptListTasks; $i++) {
             if ($listTasks->tas_due_date[$i] == '') {
                 $listTasks->tas_due_date[$i] = $strings['none'];
+                $no_due_date += 1;
             }
 
             $idStatus = $listTasks->tas_status[$i];
@@ -715,8 +718,16 @@ if ($projectDetail->pro_phase_set[0] != '0') {
                 echo "<a href='../projects/viewproject.php?id=" . $projectDetail->pro_id[0] . "&amp;base=1'>compact</a><br>";
             }
 
-            echo '<img src="../tasks/graphtasks.php?project=' . $projectDetail->pro_id[0] . '&amp;base=' . $_GET['base'] . '" alt=""><br>
-<span class="listEvenBold">' . buildLink('http://www.aditus.nu/jpgraph/', 'JpGraph', LINK_POWERED) . '</span>';
+            // if there's one or more tasks without due date, display an error message
+
+            if(!$no_due_date){
+                echo '<img src="../tasks/graphtasks.php?project=' . $projectDetail->pro_id[0] . '&amp;base=' . $_GET['base'] . '" alt=""><br>
+                <span class="listEvenBold">' . buildLink('http://www.aditus.nu/jpgraph/', 'JpGraph', LINK_POWERED) . '</span>';
+            } else {
+                echo "<b>".$strings['gantt_error']."</b>";
+            }
+
+            
         }
 
     } else {
