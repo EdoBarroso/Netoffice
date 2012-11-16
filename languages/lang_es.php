@@ -535,4 +535,7 @@ $strings["license"] = "License";
 // 2.4
 $strings["settings_notwritable"] = "Settings.php file is not writable";
 
+// For new update in resultsreport.php
+$strings["gantt_error"] = "No se puede dibujar la Gantt, hay una o más actividades sin fecha de compromiso";
+
 ?>

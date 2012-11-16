@@ -299,6 +299,11 @@ if ($comptListTasks != "0") {
             $block1->cellRow($statusPublish[$idPublish]);
         } 
         $block1->closeRow();
+
+        // checks that all tasks have due date for gantt drawing
+        if ($listTasks->tas_due_date[$i] == '--'){
+            $no_due_date += 1;
+        }
     } 
     $block1->closeResults();
 
@@ -310,8 +315,14 @@ if ($comptListTasks != "0") {
             echo "<a href='resultsreport.php?id=$id&amp;base=1'>compact</a><br>";
         }
 
-        echo "<img src=\"graphtasks.php?report=$id" . '&amp;base=' . $_GET['base'] . "\" alt=\"\"><br>
-<span class=\"listEvenBold\">" . buildLink("http://www.aditus.nu/jpgraph/", "JpGraph", LINK_POWERED) . "</span>";
+        // if 1 or more tasks don't have a due date, display an error message
+        if(!$no_due_date){
+            echo "<img src=\"graphtasks.php?report=$id" . '&amp;base=' . $_GET['base'] . "\" alt=\"\"><br>
+            <span class=\"listEvenBold\">" . buildLink("http://www.aditus.nu/jpgraph/", "JpGraph", LINK_POWERED) . "</span>";
+        } else{
+            echo "<b>".$strings['gantt_error']."</b>";
+        }
+        
     } 
 
     echo "

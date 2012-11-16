@@ -652,5 +652,7 @@ $strings['reportsusage']='Resource Usage Detail';
 $strings['reports_from']='from';
 $strings['reports_to']='to';
 
+// For new update in resultsreport.php
+$strings["gantt_error"] = "Cannot show Gantt chart. There are some tasks without due date";
 
 ?>
