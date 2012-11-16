@@ -1,7 +1,7 @@
 Netoffice
 =========
 
-Base Netoffice installation, but now (partially) working under PHP 5. It's now using the latest version of JPGraph.
+Base Netoffice installation, but now (partially) working under PHP 5. Uses the latest version of JPGraph.
 
 * Windows: Works perfectly under Appserv by default.
 * Linux: Remember to install MS TrueType Fonts under your system.
